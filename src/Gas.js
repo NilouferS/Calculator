@@ -19,20 +19,25 @@ class Gas extends Component {
         this.setState({ gasAmount: (((100 * 10) + ((this.state.unitsUsed - 100) * 20)) / 100) });
     }
 
+    reset() {
+        document.getElementsByTagName('input')[0].value = '';
+        this.setState({ gasAmount: 0, unitsUsed: 0});
+     }
+
     render() {
         let { unitsUsed, currentUnit, gasAmount } = this.state;
         return (
-
+            
             <div className='container'>
+               
                 <div className='item'>
-                
+                        
                         <label className='heading'>Enter the Gas meter readings: </label>
                         <input
                             type='text' className='border'
                             placeholder={currentUnit}
                             onChange={(e) => this.unitUsed(e)}
                         />
-                   
                         <label className='heading'>The Gas unit used: </label>
                         <label className='border'>
                             {unitsUsed}
@@ -44,7 +49,11 @@ class Gas extends Component {
                         >
                             £{gasAmount.toFixed(2)}
                         </label>
-                    {/* </div> */}
+                        <br></br>
+                        <button  onClick = {() => this.reset()}> 
+                             RESET 
+                        </button>  
+                   
                 </div>
 
             </div>

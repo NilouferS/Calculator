@@ -17,7 +17,10 @@ class Electricity extends Component{
          console.log(this.state.unitsUsed);
          this.setState({electricityAmount: (((100 * 10) + ((this.state.unitsUsed - 100) * 20))/100) });
      }
-
+     reset() {
+        document.getElementsByTagName('input')[1].value = '';
+        this.setState({ electricityAmount: 0, unitsUsed: 0 });
+     }
     render() {
         let {unitsUsed, current, electricityAmount} = this.state;
         return(
@@ -26,20 +29,25 @@ class Electricity extends Component{
                 <div className='item'>
                     <label className='heading'>Enter the Electricity meter readings: </label>
                     <input 
-                        type='text'
+                        type='text' className='border'
                         placeholder = {current}
                         onChange = {(e) => this.electricityUsed(e)}
                      />
                     <label className='heading'>The Electricity unit used: </label>  
-                    <label className='label'>
+                    <label className='border'>
                         {unitsUsed}
                     </label>
-                    <label className='heading'>Electricity Bill Amount: £ </label>
-                    <label className='label'
+                    <label className='heading'>Electricity Bill Amount:  </label>
+                    <label className='border'
                         placeholder = {electricityAmount} 
                     >
-                        {electricityAmount.toFixed(2)}
+                         £{electricityAmount.toFixed(2)}
                     </label>
+                    <br></br>
+                    <button  onClick = {() => this.reset()}> 
+                             RESET 
+                        </button>  
+                   
                 
                 </div>
             
