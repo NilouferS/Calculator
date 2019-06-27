@@ -1,10 +1,10 @@
 .container{
   display: grid;
-  grid-template-columns:( 1fr, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 300px;
   grid-template-areas:". centered-box .";
-  border: 1px solid white;
-  background-color: black;
+  /* border: 1px solid white; */
+  background-color: seagreen;
 }
 
 .item {
@@ -16,6 +16,7 @@
   padding: 30px;
   text-align: center;
   background-color: white;
+  
 }
 
 .border {
@@ -34,8 +35,25 @@ button {
 h1 {
   text-align: center;
   color: white;
-}
+  animation-duration: 3s;
+  animation-name: slidein;
+   }
+   
+   @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%;
+    }
+   
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+   }
+
+
+
 
 body {
-  background-color: black;
+  background-color: seagreen;
 }
